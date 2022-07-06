@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, Text, useColorModeValue, Divider } from "@chakra-ui/react";
 import { RiPencilLine, RiUserAddLine } from "react-icons/ri";
 import { FormButton } from "../../components/Form/FormButton";
 import { Header } from "../../components/Header";
@@ -15,6 +15,8 @@ export default function UserList() {
   // }, []);
 
   const boxColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.100', 'gray.700');
+  const tableHeaderColor = useColorModeValue('gray.500', 'gray.300');
 
   return (
     <Box>
@@ -32,14 +34,14 @@ export default function UserList() {
             </FormButton>
           </Flex>
 
-          <Table colorScheme="whiteAlpha">
+          <Table colorScheme="gray">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" width="8">
+                <Th px="6" color={tableHeaderColor} width="8">
                   <Checkbox colorScheme="pink" />
                 </Th>
-                <Th px="6" color="gray.300">Usuário</Th>
-                <Th px="6" color="gray.300">Data de cadastro</Th>
+                <Th px="6" color={tableHeaderColor}>Usuário</Th>
+                <Th px="6" color={tableHeaderColor}>Data de cadastro</Th>
                 <Th width="8"></Th>
               </Tr>
             </Thead>
@@ -51,7 +53,7 @@ export default function UserList() {
                 <Td>
                   <Box>
                     <Text fontWeight="bold">Nome Usuario</Text>
-                    <Text fontSize="sm" color="gray.300">email@email.com</Text>
+                    <Text fontSize="sm" color={tableHeaderColor}>email@email.com</Text>
                   </Box>
                 </Td>
                 <Td>05 de Julho de 2022</Td>

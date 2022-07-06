@@ -16,6 +16,7 @@ export default function PaginationItem({
           fontSize="xs"
           width="4"
           colorScheme="pink"
+          color="gray.50"
           disabled
           _hover={{
             bg: 'pink.500',
