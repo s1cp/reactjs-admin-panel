@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, Text, useColorModeValue, Divider } from "@chakra-ui/react";
+import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, Text, useColorModeValue, Divider, useBreakpointValue } from "@chakra-ui/react";
 import { RiPencilLine, RiUserAddLine } from "react-icons/ri";
 import { FormButton } from "../../components/Form/FormButton";
 import { Header } from "../../components/Header";
@@ -14,6 +14,12 @@ export default function UserList() {
   //   });
   // }, []);
 
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
+  // Colors
   const boxColor = useColorModeValue('white', 'gray.800');
   const borderColor = useColorModeValue('gray.100', 'gray.700');
   const tableHeaderColor = useColorModeValue('gray.500', 'gray.300');
@@ -37,17 +43,17 @@ export default function UserList() {
           <Table colorScheme="gray">
             <Thead>
               <Tr>
-                <Th px="6" color={tableHeaderColor} width="8">
+                <Th px={["4", "4", "6"]} color={tableHeaderColor} width="8">
                   <Checkbox colorScheme="pink" />
                 </Th>
-                <Th px="6" color={tableHeaderColor}>Usuário</Th>
-                <Th px="6" color={tableHeaderColor}>Data de cadastro</Th>
+                <Th color={tableHeaderColor}>Usuário</Th>
+                {isWideVersion && <Th color={tableHeaderColor}>Data de cadastro</Th>}
                 <Th width="8"></Th>
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -56,9 +62,15 @@ export default function UserList() {
                     <Text fontSize="sm" color={tableHeaderColor}>email@email.com</Text>
                   </Box>
                 </Td>
-                <Td>05 de Julho de 2022</Td>
+                {isWideVersion && <Td>05 de Julho de 2022</Td>}
                 <Td>
-                  <FormButton colorScheme="purple" icon={RiPencilLine} buttonSize="sm">
+                  <FormButton
+                    ariaLabel="Editar Usuário"
+                    colorScheme="purple"
+                    icon={RiPencilLine}
+                    buttonSize="sm"
+                    iconOnly={!isWideVersion}
+                  >
                     Editar
                   </FormButton>
                 </Td>
