@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Box, Checkbox, Flex, Heading, Table, Tbody, Td, Th, Thead, Tr, Text, useColorModeValue, Divider, useBreakpointValue } from "@chakra-ui/react";
 import { RiPencilLine, RiUserAddLine } from "react-icons/ri";
 import { FormButton } from "../../components/Form/FormButton";
@@ -35,7 +36,12 @@ export default function UserList() {
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">Usuários</Heading>
 
-            <FormButton colorScheme="pink" icon={RiUserAddLine} buttonSize="sm">
+            <FormButton
+              href="/users/create"
+              colorScheme="pink"
+              icon={RiUserAddLine}
+              buttonSize="sm"
+            >
               Novo Usuário
             </FormButton>
           </Flex>

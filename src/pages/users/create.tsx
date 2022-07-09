@@ -35,7 +35,7 @@ export default function UserCreate() {
 
           <Flex mt="8" justify="flex-end">
             <HStack spacing="4">
-              <FormButton colorScheme="whiteAlpha" icon={RiCloseLine}>
+              <FormButton href="/users" colorScheme="whiteAlpha" icon={RiCloseLine}>
                 Cancelar
               </FormButton>
 
