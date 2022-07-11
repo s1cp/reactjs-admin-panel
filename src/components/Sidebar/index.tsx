@@ -8,7 +8,7 @@ export function Sidebar() {
   const { isOpen, onClose } = useSidebarDrawer();
 
   const isDrawerSidebar = useBreakpointValue({
-    base: true,
+    base: true, // Is causing layout shift
     lg: false,
   });
 
