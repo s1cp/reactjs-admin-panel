@@ -8,11 +8,11 @@ import { FormButton } from "../../components/Form/FormButton";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
+import { api } from "../../services/api";
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery("users", async () => {
-    const response = await fetch("http://localhost:3000/api/users");
-    const data = await response.json();
+  const { data, isLoading, isFetching, error } = useQuery("users", async () => {
+    const { data } = await api.get("users");
 
     const users = data.users.map(user => {
       return {
@@ -50,7 +50,12 @@ export default function UserList() {
 
         <Flex flex="1" flexFlow="column" borderRadius={8} bg={boxColor} p="8" overflow="hidden">
           <Flex justify="space-between" align="center" mb="8">
-            <Heading size="lg" fontWeight="normal">Usuários</Heading>
+            <Heading size="lg" fontWeight="normal">
+              Usuários
+              {isFetching &&
+              !isLoading &&
+              <Spinner size="sm" color="gray.500" ml="2" />}
+            </Heading>
 
             <FormButton
               href="/users/create"
