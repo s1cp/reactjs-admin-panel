@@ -3,11 +3,13 @@ import { Button, DarkMode } from '@chakra-ui/react';
 interface PaginationItemProps {
   isCurrent?: boolean;
   pageNumber: number;
+  onPageChange: (pageNumber: number) => void;
 }
 
 export default function PaginationItem({
   isCurrent = false,
-  pageNumber
+  pageNumber,
+  onPageChange
 }: PaginationItemProps) {
   if (isCurrent) {
     return (
@@ -37,6 +39,7 @@ export default function PaginationItem({
       fontSize="xs"
       width="4"
       colorScheme="gray"
+      onClick={() => onPageChange(pageNumber)}
     >
       {pageNumber}
     </Button>
